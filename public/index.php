@@ -19,7 +19,11 @@ $mail->Port = 587;
 $mail->SMTPAuth = true;
 $mail->Username = 'dinko.dugec@gmail.com';
 /* $mail->Password = 'ronbetelges'; */
+<<<<<<< HEAD
  $mail->Password = ''; 
+=======
+ $mail->Password = ''; 
+>>>>>>> b7e5526f3bce22b487ba6f34da0aafce08010433
 $mail->SMTPSecure = 'tls';
 
 /**
