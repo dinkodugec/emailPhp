@@ -4,7 +4,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+
 require '../vendor/autoload.php';
+require '../classes/Config.php';
 
 
 /**
@@ -14,16 +16,11 @@ $mail = new PHPMailer();
 
 $mail->isSMTP();
 $mail->SMTPDebug = 0;
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;
+$mail->Host = Config::SMTP_HOST;
+$mail->Port = Config::SMTP_PORT;
 $mail->SMTPAuth = true;
-$mail->Username = 'dinko.dugec@gmail.com';
-/* $mail->Password = 'ronbetelges'; */
-<<<<<<< HEAD
- $mail->Password = ''; 
-=======
- $mail->Password = ''; 
->>>>>>> b7e5526f3bce22b487ba6f34da0aafce08010433
+$mail->Username = Config::SMTP_USER;
+ $mail->Password = Config::SMTP_PASSWORD; 
 $mail->SMTPSecure = 'tls';
 
 /**
