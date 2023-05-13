@@ -12,4 +12,30 @@ require '../vendor/autoload.php';
  */
 $mail = new PHPMailer();
 
-echo get_class($mail);
+$mail->isSMTP();
+$mail->SMTPDebug = 0;
+$mail->Host = 'smtp.gmail.com';
+$mail->Port = 587;
+$mail->SMTPAuth = true;
+$mail->Username = 'dinko.dugec@gmail.com';
+/* $mail->Password = 'ronbetelges'; */
+ $mail->Password = ''; 
+$mail->SMTPSecure = 'tls';
+
+/**
+ * Enable SMTP debug messages
+ */
+$mail->SMTPDebug = 2;
+
+/**
+ * Send an email
+ */
+$mail->setFrom('dinko.dugec@gmail.com');
+$mail->addAddress('dugecdinko@gmail.com');
+$mail->Body = 'This is a test message';
+
+if ($mail->send()) {
+	echo 'Message sent!';
+} else {
+    echo 'Mailer error: ' . $mail->ErrorInfo;
+}
