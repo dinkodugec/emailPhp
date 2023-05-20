@@ -35,8 +35,9 @@ $mail->CharSet = 'UTF-8'; //always include, it can send a content without englis
 $mail->setFrom('dinko.dugec@gmail.com', 'Dinko Dugec');
 $mail->addAddress('dugecdinko@gmail.com', 'Dugi');
 
-/* Add a different reply to address */
-$mail->addReplyTo('someadress@gmail.com');  //Send an email with a Different Address for Replies
+$mail->addAttachment(dirname(__FILE__). '/example.pdf');
+//https://www.outlook-apps.com/maximum-email-size/
+/* $mail->addAttachment(dirname(__FILE__). '/example.pdf' , 'sample.pdf' is file name that a recipient will be get); */
 
 $mail->Subject = 'An email sent from PHP'; //naslov 
 $mail->Body = 'This is a test message'; // teks koji je poslan
