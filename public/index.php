@@ -22,6 +22,7 @@ $mail->SMTPAuth = true;
 $mail->Username = Config::SMTP_USER;
  $mail->Password = Config::SMTP_PASSWORD; 
 $mail->SMTPSecure = 'tls';
+$mail->CharSet = 'UTF-8'; //always include, it can send a content without englis charachter, croatian example
 
 /**
  * Enable SMTP debug messages
@@ -33,6 +34,10 @@ $mail->SMTPSecure = 'tls';
  */
 $mail->setFrom('dinko.dugec@gmail.com', 'Dinko Dugec');
 $mail->addAddress('dugecdinko@gmail.com', 'Dugi');
+
+/* Add a different reply to address */
+$mail->addReplyTo('someadress@gmail.com');  //Send an email with a Different Address for Replies
+
 $mail->Subject = 'An email sent from PHP'; //naslov 
 $mail->Body = 'This is a test message'; // teks koji je poslan
 
@@ -42,14 +47,3 @@ if ($mail->send()) {
     echo 'Mailer error: ' . $mail->ErrorInfo;
 }
 
-/* Multiple "To" address*/
-$mail->addAddress('dinko.dugec@gmail.com');
-$mail->addAddress('eva.dugec@gmail.com');
-
-/*  "Cc" address*/
-$mail->addCC('dinko.dugec@gmail.com');
-$mail->addCC('eva.dugec@gmail.com');
-
-/*  "Bc" address - bc other recipient can not see, to and cc can see */
-$mail->addBCC('dinko.dugec@gmail.com');
-$mail->addBCC('eva.dugec@gmail.com');
