@@ -46,6 +46,11 @@ $mail->Body = '<h2>External Image</h2>'
 
 $mail->AddEmbeddedImage(dirname(__FILE__) . '/banana.png', 'banana');
 
+/* $mail->Body = '<h1 style="font-style: italic;">Hello</h1>'
+             . "\n"
+             . '<p style="color: #f00;">This is an email with some <span style="color: #0f0">CSS styles</span>.</p>';
+ The safest way to style email recipient, but time consuming*/
+ 
 if ($mail->send()) {
 	echo 'Message sent!';
 } else {
