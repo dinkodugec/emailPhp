@@ -23,6 +23,7 @@ $mail->Username = Config::SMTP_USER;
  $mail->Password = Config::SMTP_PASSWORD; 
 $mail->SMTPSecure = 'tls';
 $mail->CharSet = 'UTF-8'; //always include, it can send a content without englis charachter, croatian example
+$mail->isHTML('true');
 
 /**
  * Enable SMTP debug messages
@@ -35,12 +36,15 @@ $mail->CharSet = 'UTF-8'; //always include, it can send a content without englis
 $mail->setFrom('dinko.dugec@gmail.com', 'Dinko Dugec');
 $mail->addAddress('dugecdinko@gmail.com', 'Dugi');
 
-$mail->addAttachment(dirname(__FILE__). '/example.pdf');
-//https://www.outlook-apps.com/maximum-email-size/
-/* $mail->addAttachment(dirname(__FILE__). '/example.pdf' , 'sample.pdf' is file name that a recipient will be get); */
 
 $mail->Subject = 'An email sent from PHP'; //naslov 
-$mail->Body = 'This is a test message'; // teks koji je poslan
+$mail->Body = '<h2>External Image</h2>'
+             . '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg">'
+             . "\n"
+             . '<h2>Embedded Image</h2>'
+             . '<img src="cid:banana">';
+
+$mail->AddEmbeddedImage(dirname(__FILE__) . '/banana.png', 'banana');
 
 if ($mail->send()) {
 	echo 'Message sent!';
